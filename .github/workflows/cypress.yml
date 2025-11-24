@@ -1,0 +1,36 @@
+name: CI - Node CRUD + Cypress
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Option A: Use our npm test (start-server-and-test)
+      - name: Run Cypress tests
+        run: npm test
+
+      # Option B (alternative): Directly use Cypress GitHub Action
+      # - name: Cypress run
+      #   uses: cypress-io/github-action@v6
+      #   with:
+      #     start: npm start
+      #     wait-on: "http://localhost:3000"
+      #     browser: chrome
