@@ -11,7 +11,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 let users = [
     { id: 1, name: "Murali", email: "murali@example.com" },
-    { id: 2, name: "John", email: "john@example.com" }
+    { id: 2, name: "John", email: "john@example.com" },
+    { id: 3, name: "John MM", email: "john123@example.com" }
 ];
 let nextId = 3;
 
